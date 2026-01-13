@@ -1,0 +1,9 @@
+# decrypted / local secrets
+*.yaml.dec
+*.decrypted*
+secret.yaml
+keys.txt
+age.key
+
+#kube config
+kubeconfig

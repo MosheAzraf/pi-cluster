@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: infrastructure-traefik
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/MosheAzraf/pi-cluster
+    targetRevision: main
+    path: kubernetes/infrastructure/traefik
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: kube-system
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
