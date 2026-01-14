@@ -8,7 +8,7 @@ spec:
   source:
     repoURL: https://github.com/MosheAzraf/pi-cluster
     targetRevision: main
-    path: kubernetes/infrastructure/argocd
+    path: kubernetes/infrastructure/argocd.git
   destination:
     server: https://kubernetes.default.svc
     namespace: argocd
