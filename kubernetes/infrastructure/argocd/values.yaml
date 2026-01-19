@@ -1,0 +1,14 @@
+server:
+  replicas: 2
+
+repoServer:
+  replicas: 2
+
+controller:
+  replicas: 2
+
+dex:
+  replicas: 2
+
+redis-ha:
+  enabled: true
