@@ -1,5 +1,6 @@
 controller:
   replicas: 3
+  enableSharding: true
 
 server:
   replicas: 3
@@ -11,10 +12,10 @@ dex:
   replicas: 2
 
 redis:
-  enabled: false
+  enabled: false   
 
 redis-ha:
-  enabled: true
+  enabled: true   
 
 configs:
   cm:
