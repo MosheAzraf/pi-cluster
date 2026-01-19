@@ -10,8 +10,12 @@ repoServer:
 dex:
   replicas: 2
 
+redis:
+  enabled: false
+
 redis-ha:
   enabled: true
+
 
 configs:
   cm:
