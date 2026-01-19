@@ -1,10 +1,10 @@
+controller:
+  replicas: 3
+
 server:
   replicas: 3
 
 repoServer:
-  replicas: 3
-
-controller:
   replicas: 3
 
 dex:
