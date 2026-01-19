@@ -5,7 +5,10 @@ repoServer:
   replicas: 2
 
 controller:
-  replicaCount: 2
+  replicas: 2
+  extraEnv:
+    - name: ARGOCD_CONTROLLER_REPLICAS
+      value: "2"
 
 dex:
   replicas: 2
