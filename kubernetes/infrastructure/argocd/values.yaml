@@ -6,7 +6,8 @@ repoServer:
 
 controller:
   replicas: 3
-  enableSharding: true
+  sharding:
+    enabled: true
 
 
 dex:
