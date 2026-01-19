@@ -11,10 +11,11 @@ dex:
   replicas: 2
 
 redis:
-  enabled: false
+  enabled: false  
 
 redis-ha:
-  enabled: true
+  enabled: true   
+  fullnameOverride: argocd-redis-ha-haproxy
 
 configs:
   cm:
