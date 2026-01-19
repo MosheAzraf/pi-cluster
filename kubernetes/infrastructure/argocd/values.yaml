@@ -12,3 +12,7 @@ dex:
 
 redis-ha:
   enabled: true
+
+configs:
+  cm:
+    redis.server: argocd-redis-ha-haproxy
