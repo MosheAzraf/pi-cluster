@@ -5,21 +5,20 @@ metadata:
   namespace: argocd
 spec:
   project: default
+
   source:
     repoURL: https://argoproj.github.io/argo-helm
     chart: argo-cd
     targetRevision: 6.7.12
     helm:
-      valueFiles:
-        - $values/kubernetes/infrastructure/argocd/values.yaml
+      values: |
+        {{ .Files.Get "kubernetes/infrastructure/argocd/values.yaml" }}
+
   destination:
     server: https://kubernetes.default.svc
     namespace: argocd
+
   syncPolicy:
     automated:
       prune: true
       selfHeal: true
-  sources:
-    - repoURL: https://github.com/MosheAzraf/pi-cluster.git
-      targetRevision: main
-      ref: values
