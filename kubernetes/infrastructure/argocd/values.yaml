@@ -5,7 +5,7 @@ repoServer:
   replicas: 2
 
 controller:
-  replicas: 2
+  replicaCount: 2
 
 dex:
   replicas: 2
