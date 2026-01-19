@@ -1,0 +1,16 @@
+server:
+  replicas: 3
+
+repoServer:
+  replicas: 3
+
+controller:
+  replicas: 3
+  enableSharding: true
+
+
+dex:
+  replicas: 2
+
+redis-ha:
+  enabled: true
