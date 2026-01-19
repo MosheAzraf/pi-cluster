@@ -4,14 +4,15 @@ server:
 repoServer:
   replicas: 3
 
-controller:
+applicationController:
   replicas: 3
-  sharding:
-    enabled: true
-
 
 dex:
   replicas: 2
 
 redis-ha:
   enabled: true
+
+configs:
+  cm:
+    redis.server: argocd-redis-ha-haproxy
