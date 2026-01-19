@@ -4,7 +4,7 @@ server:
 repoServer:
   replicas: 3
 
-applicationController:
+controller:
   replicas: 3
 
 dex:
