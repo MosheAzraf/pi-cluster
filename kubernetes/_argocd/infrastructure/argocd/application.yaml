@@ -5,13 +5,10 @@ metadata:
   namespace: argocd
 spec:
   project: default
-  source:
-    repoURL: https://github.com/MosheAzraf/pi-cluster.git
-    targetRevision: main
-    path: kubernetes/infrastructure/argocd
-    helm:
-      valueFiles:
-        - values.yaml
+  sources:
+    - repoURL: https://github.com/MosheAzraf/pi-cluster.git
+      targetRevision: main
+      path: kubernetes/infrastructure/argocd
   destination:
     server: https://kubernetes.default.svc
     namespace: argocd
