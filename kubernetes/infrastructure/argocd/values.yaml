@@ -1,22 +1,18 @@
+redis-ha:
+  enabled: true
+
 controller:
-  replicas: 3
+  replicas: 1
 
 server:
-  replicas: 3
+  autoscaling:
+    enabled: true
+    minReplicas: 2
 
 repoServer:
-  replicas: 3
+  autoscaling:
+    enabled: true
+    minReplicas: 2
 
-dex:
+applicationSet:
   replicas: 2
-
-redis:
-  enabled: false  
-
-redis-ha:
-  enabled: true   
-  fullnameOverride: argocd-redis-ha-haproxy
-
-configs:
-  cm:
-    redis.server: argocd-redis-ha-haproxy

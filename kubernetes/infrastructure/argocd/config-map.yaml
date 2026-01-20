@@ -1,9 +1,0 @@
-apiVersion: v1
-
-kind: ConfigMap
-metadata:
-  name: argocd-cmd-params-cm
-  namespace: argocd
-data:
-  # Set to "true" to disable the API server's internal TLS and use an ingress controller for TLS termination
-  server.insecure: "true"
