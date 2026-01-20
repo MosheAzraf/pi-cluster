@@ -1,14 +1,14 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: argocd-self
+  name: argocd
   namespace: argocd
 spec:
   project: default
-  sources:
-    - repoURL: https://github.com/MosheAzraf/pi-cluster.git
-      targetRevision: main
-      path: kubernetes/infrastructure/argocd
+  source:
+    repoURL: https://github.com/MosheAzraf/pi-cluster.git
+    targetRevision: main
+    path: kubernetes/infrastructure/argocd
   destination:
     server: https://kubernetes.default.svc
     namespace: argocd
@@ -16,5 +16,3 @@ spec:
     automated:
       prune: true
       selfHeal: true
-    syncOptions:
-      - CreateNamespace=true
