@@ -27,10 +27,7 @@ repoServer:
     - name: install-ksops
       image: viaductoss/ksops:v4.4.0
       command: ["/bin/cp"]
-      args:
-        - /ksops
-        - /kustomize
-        - /custom-tools/
+      args: ["/ksops", "/kustomize", "/custom-tools/"]
       volumeMounts:
         - mountPath: /custom-tools
           name: custom-tools
