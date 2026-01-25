@@ -15,6 +15,7 @@ repoServer:
     enabled: true
     minReplicas: 2
 
+  # ---------- KSOPS ----------
   volumes:
     - name: custom-tools
       emptyDir: {}
@@ -43,11 +44,14 @@ repoServer:
       subPath: ksops
     - name: sops-age
       mountPath: /.config/sops/age
+  # ---------- KSOPS ----------
 
 applicationSet:
   replicas: 2
 
 configs:
+  params:
+    server.insecure: true
   cm:
     kustomize.buildOptions: "--enable-alpha-plugins --enable-exec"
 
