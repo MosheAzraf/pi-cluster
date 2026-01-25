@@ -15,54 +15,41 @@ repoServer:
     enabled: true
     minReplicas: 2
 
-  # ---- KSOPS START ----
+  # start of kustomize plugin
   volumes:
     - name: custom-tools
-      emptyDir: {}
-    - name: ksops-bin
       emptyDir: {}
     - name: sops-age
       secret:
         secretName: sops-age
 
   initContainers:
-    - name: ksops-bin
-      image: viaductoss/ksops:v4.4.0
-      command: ["sleep", "infinity"]
-      volumeMounts:
-        - name: ksops-bin
-          mountPath: /ksops
-
     - name: install-ksops
-      image: busybox:1.36
+      image: viaductoss/ksops:v4.4.0
       command: ["/bin/sh", "-c"]
       args:
-        - |
-          set -e
-          echo "Installing ksops and kustomize"
-          cp /ksops/ksops /custom-tools/ksops
-          cp /ksops/kustomize /custom-tools/kustomize
-          chmod +x /custom-tools/*
+        - echo "Installing KSOPS...";
+          mv ksops /custom-tools/;
+          mv kustomize /custom-tools/;
+          echo "Done.";
       volumeMounts:
-        - name: custom-tools
-          mountPath: /custom-tools
-        - name: ksops-bin
-          mountPath: /ksops
+        - mountPath: /custom-tools
+          name: custom-tools
 
   env:
     - name: SOPS_AGE_KEY_FILE
       value: /.config/sops/age/keys.txt
 
   volumeMounts:
-    - name: custom-tools
-      mountPath: /usr/local/bin/ksops
-      subPath: ksops
-    - name: custom-tools
-      mountPath: /usr/local/bin/kustomize
+    - mountPath: /usr/local/bin/kustomize
+      name: custom-tools
       subPath: kustomize
-    - name: sops-age
-      mountPath: /.config/sops/age
-  # ---- KSOPS END ----
+    - mountPath: /usr/local/bin/ksops
+      name: custom-tools
+      subPath: ksops
+    - mountPath: /.config/sops/age
+      name: sops-age
+  # end of kustomize plugin
 
 applicationSet:
   replicas: 2
