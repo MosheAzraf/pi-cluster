@@ -1,7 +1,6 @@
 apiVersion: cert-manager.io/v1
 kind: ClusterIssuer
 metadata:
-  name: internal-ca
+  name: internal-ca-bootstrap
 spec:
-  ca:
-    secretName: internal-ca-secret
+  selfSigned: {}
