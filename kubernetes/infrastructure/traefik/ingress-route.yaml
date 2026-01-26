@@ -4,10 +4,11 @@ metadata:
   name: traefik-dashboard
   namespace: kube-system
   annotations:
-    cert-manager.io/cluster-issuer: letsencrypt
+    cert-manager.io/cluster-issuer: internal-ca
 spec:
   entryPoints:
     - web
+    - websecure
   routes:
     - match: Host(`traefik.home.lab`) && (PathPrefix(`/dashboard`) || PathPrefix(`/api`))
       kind: Rule
