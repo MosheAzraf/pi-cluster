@@ -3,6 +3,8 @@ kind: IngressRoute
 metadata:
   name: traefik-dashboard
   namespace: kube-system
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt
 spec:
   entryPoints:
     - web
@@ -12,3 +14,5 @@ spec:
       services:
         - name: api@internal
           kind: TraefikService
+  tls:
+    secretName: traefik-dashboard-tls
