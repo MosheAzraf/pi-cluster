@@ -12,6 +12,8 @@ spec:
   routes:
     - match: Host(`traefik.home.lab`) && (PathPrefix(`/dashboard`) || PathPrefix(`/api`))
       kind: Rule
+      middlewares:
+        - name: redirect-to-https
       services:
         - name: api@internal
           kind: TraefikService
