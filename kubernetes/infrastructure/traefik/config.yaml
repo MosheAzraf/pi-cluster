@@ -8,4 +8,6 @@ spec:
     additionalArguments:
       - "--api.dashboard=true"
       - "--api.insecure=false"
-
+      - "--providers.kubernetesingress=true"
+      - "--providers.kubernetesingress.allowcrossnamespace=true"
+      - "--providers.kubernetesingress.ingressclass=traefik"

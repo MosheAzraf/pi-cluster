@@ -3,8 +3,6 @@ kind: IngressRoute
 metadata:
   name: traefik-dashboard
   namespace: kube-system
-  annotations:
-    cert-manager.io/cluster-issuer: internal-ca 
 spec:
   entryPoints:
     - websecure
