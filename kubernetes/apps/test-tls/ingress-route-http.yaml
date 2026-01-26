@@ -10,7 +10,7 @@ spec:
     - match: Host(`whoami.home.lab`)
       kind: Rule
       middlewares:
-        - name: redirect-to-https
+        - name: redirect-https
           namespace: kube-system
       services:
         - name: whoami
