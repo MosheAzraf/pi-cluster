@@ -1,0 +1,46 @@
+installCRDs: true
+
+controller:
+  replicaCount: 3
+  podDisruptionBudget:
+    enabled: true
+  affinity:
+    podAntiAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        - labelSelector:
+            matchExpressions:
+              - key: app.kubernetes.io/name
+                operator: In
+                values:
+                  - cert-manager
+          topologyKey: kubernetes.io/hostname
+
+webhook:
+  replicaCount: 3
+  podDisruptionBudget:
+    enabled: true
+  affinity:
+    podAntiAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        - labelSelector:
+            matchExpressions:
+              - key: app.kubernetes.io/name
+                operator: In
+                values:
+                  - cert-manager
+          topologyKey: kubernetes.io/hostname
+
+cainjector:
+  replicaCount: 3
+  podDisruptionBudget:
+    enabled: true
+  affinity:
+    podAntiAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        - labelSelector:
+            matchExpressions:
+              - key: app.kubernetes.io/name
+                operator: In
+                values:
+                  - cert-manager
+          topologyKey: kubernetes.io/hostname
