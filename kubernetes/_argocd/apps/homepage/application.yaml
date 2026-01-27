@@ -10,8 +10,9 @@ spec:
     repoURL: https://github.com/MosheAzraf/pi-cluster.git
     targetRevision: main
     path: kubernetes/apps/homepage/
-    plugin:
-      name: ksops
+    #enable this when adding secret file
+    #plugin:
+    #  name: ksops
 
   destination:
     server: https://kubernetes.default.svc
