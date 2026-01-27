@@ -1,0 +1,25 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: homepage
+  namespace: argocd
+spec:
+  project: default
+
+  source:
+    repoURL: https://github.com/MosheAzraf/pi-cluster.git
+    targetRevision: main
+    path: kubernetes/apps/homepage/
+    plugin:
+      name: ksops
+
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: homepage
+
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
