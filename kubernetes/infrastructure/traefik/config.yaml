@@ -9,5 +9,4 @@ spec:
       - "--api.dashboard=true"
       - "--api.insecure=true"
       - "--providers.kubernetesingress=true"
-      - "--providers.kubernetesingress.allowcrossnamespace=true"
       - "--providers.kubernetesingress.ingressclass=traefik"
