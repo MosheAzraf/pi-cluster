@@ -34,12 +34,6 @@ data:
         - Traefik:
             icon: traefik.png
             href: https://traefik.home.lab/dashboard/  
-            widget:
-              type: traefik
-              url: http://traefik.kube-system.svc.cluster.local
-              routers: true
-              services: true
-              middleware: true
 
         - AdGuard Home:
             icon: adguard-home.png

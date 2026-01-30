@@ -1,27 +1,13 @@
-apiVersion: helm.cattle.io/v1
-kind: HelmChartConfig
+apiVersion: v1
+kind: ConfigMap
 metadata:
-  name: traefik
-  namespace: kube-system
-spec:
-  valuesContent: |-
-    api:
-      enabled: true
-      dashboard: true
-      insecure: true
+  name: homepage
+  namespace: homepage
+data:
+  kubernetes.yaml: |
+    mode: disabled
 
-    providers:
-      kubernetesIngress:
-        enabled: true
-        ingressClass: traefik
-
-    ports:
-      web:
-        port: 80
-        expose: true
-      websecure:
-        port: 443
-        expose: true
-      traefik:
-        port: 9000
-        expose: true
+  services.yaml: |
+    - Test:
+        - Example:
+            href: https://example.com
