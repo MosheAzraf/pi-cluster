@@ -31,7 +31,7 @@ data:
             icon: traefik.png
             href: https://traefik.home.lab/dashboard/
 
-        - AdGuard Home:
+        - AdGuard:
             icon: adguard-home.png
             href: http://10.0.0.140/
             description: runs on external server (rpi5)
