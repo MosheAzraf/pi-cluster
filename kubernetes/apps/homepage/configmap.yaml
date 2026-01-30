@@ -43,6 +43,8 @@ data:
             href: http://10.0.0.140:8080/#/dashboard
             description: runs on external server (rpi5)
             ping: 10.0.0.140
+        
+        - Test
 
   widgets.yaml: |
     - kubernetes:
