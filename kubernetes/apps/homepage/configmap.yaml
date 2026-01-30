@@ -24,7 +24,7 @@ data:
   services.yaml: |
     - Infrastructure:
         - ArgoCD:
-            icon: argocd.png
+            icon: argo-cd.png
             href: https://argocd.home.lab/
 
         - Traefik:
