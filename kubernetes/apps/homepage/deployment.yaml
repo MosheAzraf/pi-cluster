@@ -7,7 +7,7 @@ metadata:
     app.kubernetes.io/name: homepage
 spec:
   revisionHistoryLimit: 3
-  replicas: 2 # 2 for HA
+  replicas: 2
   strategy:
     type: RollingUpdate
   selector:
@@ -33,15 +33,20 @@ spec:
 
       containers:
         - name: homepage
-          image: "ghcr.io/gethomepage/homepage:v1.9.0"
+          image: ghcr.io/gethomepage/homepage:latest
           imagePullPolicy: IfNotPresent
+
           env:
             - name: HOMEPAGE_ALLOWED_HOSTS
-              value: homepage.home.lab # required, may need port. See gethomepage.dev/installation/#homepage_allowed_hosts
+              value: homepage.home.lab
+            - name: HOMEPAGE_LOG_DIR
+              value: /app/logs
+
           ports:
             - name: http
               containerPort: 3000
               protocol: TCP
+
           volumeMounts:
             - mountPath: /app/config/custom.js
               name: homepage-config
@@ -67,11 +72,14 @@ spec:
             - mountPath: /app/config/widgets.yaml
               name: homepage-config
               subPath: widgets.yaml
-            - mountPath: /app/config/logs
+
+            - mountPath: /app/logs
               name: logs
+
       volumes:
         - name: homepage-config
           configMap:
             name: homepage
+
         - name: logs
           emptyDir: {}
