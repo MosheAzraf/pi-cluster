@@ -36,7 +36,7 @@ data:
             href: https://traefik.home.lab/dashboard/  
             widget:
               type: traefik
-              url: https://traefik.home.lab
+              url: https://traefik.home.lab/api
               routers: true
               services: true
               middleware: true
