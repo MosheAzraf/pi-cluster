@@ -19,22 +19,24 @@ data:
     - Developer:
         - Github:
             - abbr: GH
-              href: https://github.com/
+              href: https://github.com/MosheAzraf
+
   services.yaml: |
-    - My First Group:
-        - My First Service:
-            href: http://localhost/
-            description: Homepage is awesome
+    - Infrastructure:
+        - ArgoCD:
+            href: https://argocd.home.lab/
+        
+        - Traefik:
+            href: https://traefik.home.lab/dashboard/  
 
-    - My Second Group:
-        - My Second Service:
-            href: http://localhost/
-            description: Homepage is the best
-
-    - My Third Group:
-        - My Third Service:
-            href: http://localhost/
-            description: Homepage is 😎
+        - AdGuard Home:
+            href: http://10.0.0.140/
+    
+    - Storage:
+        - OpenMediaVault:
+            href: http://10.0.0.140:8080/#/dashboard
+          
+    
   widgets.yaml: |
     - kubernetes:
         cluster:
@@ -57,4 +59,10 @@ data:
     - search:
         provider: duckduckgo
         target: _blank
+    - traefik:
+        url: http://traefik.traefik.svc.cluster.local:8080
+        routers: true
+        services: true
+        middleware: true
+
   docker.yaml: ""
