@@ -36,7 +36,7 @@ data:
             href: https://traefik.home.lab/dashboard/  
             widget:
               type: traefik
-              url: http://traefik.traefik.svc.cluster.local:8080
+              url: http://traefik.kube-system.svc.cluster.local:8080
               routers: true
               services: true
               middleware: true
