@@ -19,23 +19,30 @@ data:
     - Developer:
         - Github:
             - abbr: GH
-              href: https://github.com/
+              href: https://github.com/MosheAzraf
 
   services.yaml: |
-    - My First Group:
-        - My First Service:
-            href: http://localhost/
-            description: Homepage is awesome
+    - Infrastructure:
+        - ArgoCD:
+            icon: argocd.png
+            href: https://argocd.home.lab/
 
-    - My Second Group:
-        - My Second Service:
-            href: http://localhost/
-            description: Homepage is the best
+        - Traefik:
+            icon: traefik.png
+            href: https://traefik.home.lab/dashboard/
 
-    - My Third Group:
-        - My Third Service:
-            href: http://localhost/
-            description: Homepage is 😎
+        - AdGuard Home:
+            icon: adguard-home.png
+            href: http://10.0.0.140/
+            description: runs on external server (rpi5)
+            ping: 10.0.0.140
+
+    - Storage:
+        - OpenMediaVault:
+            icon: openmediavault.png
+            href: http://10.0.0.140:8080/#/dashboard
+            description: runs on external server (rpi5)
+            ping: 10.0.0.140
 
   widgets.yaml: |
     - kubernetes:
