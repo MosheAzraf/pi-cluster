@@ -64,7 +64,10 @@ data:
             ping: 10.0.0.140
 
     - Apps:
-      #applications will be added here.
+      - Placeholder:
+            icon: mdi-apps
+            href: "#"
+            description: applications will be added here
 
   widgets.yaml: |
     - kubernetes:
