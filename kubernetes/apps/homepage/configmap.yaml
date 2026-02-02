@@ -22,7 +22,7 @@ data:
               href: https://github.com/MosheAzraf
 
   services.yaml: |
-    - Infrastructure:
+    - Platform:
         - ArgoCD:
             icon: argo-cd.png
             href: https://argocd.home.lab/
@@ -31,20 +31,36 @@ data:
             icon: traefik.png
             href: https://traefik.home.lab/dashboard/
 
+    - Observability:
+        - Grafana:
+            icon: grafana.png
+            href: https://grafana.home.lab/
+            description: monitoring dashboards
+
+        - Prometheus:
+            icon: prometheus.png
+            href: https://prometheus.home.lab/
+            description: metrics collection
+
+    - Data Services:
+        - PostgreSQL (CloudNativePG):
+            icon: postgres.png
+            href: https://pg.home.lab/
+            description: in-cluster database
+
+    - External Services (Pi5):
         - AdGuard Home:
             icon: adguard-home.png
             href: http://10.0.0.140/
-            description: runs on external server (rpi5)
+            description: external server (rpi5)
             ping: 10.0.0.140
 
-    - Storage(test):
         - OpenMediaVault:
             icon: openmediavault.png
             href: http://10.0.0.140:8080/#/dashboard
-            description: runs on external server (rpi5)
+            description: external server (rpi5)
             ping: 10.0.0.140
-        
-        - Test
+
 
   widgets.yaml: |
     - kubernetes:
