@@ -2,7 +2,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: homepage
-  namespace: homepage
   annotations:
     configmap.reloader.stakater.com/auto: "true"
     #secrets.reloader.stakater.com/auto: "true"

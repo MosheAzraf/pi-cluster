@@ -16,7 +16,7 @@ spec:
 
   destination:
     server: https://kubernetes.default.svc
-    namespace: homepage
+    namespace: apps-homepage
 
   syncPolicy:
     automated:
