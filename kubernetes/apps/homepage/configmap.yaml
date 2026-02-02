@@ -32,7 +32,7 @@ data:
             icon: traefik.png
             href: https://traefik.home.lab/dashboard/
             description: ingress controller and traffic routing for the cluster
-            
+
     - Observability:
         - Grafana:
             icon: grafana.png
@@ -63,6 +63,8 @@ data:
             description: NAS and storage management on external server
             ping: 10.0.0.140
 
+    - Apps:
+      #applications will be added here.
 
   widgets.yaml: |
     - kubernetes:
