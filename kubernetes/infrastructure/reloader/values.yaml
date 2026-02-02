@@ -1,0 +1,5 @@
+reloader:
+  autoReloadAll: false
+  ignoreNamespaces: "kube-system"
+  ignoreSecrets: false
+  ignoreConfigMaps: false
