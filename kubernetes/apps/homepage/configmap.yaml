@@ -11,7 +11,6 @@ data:
 
   settings.yaml: |
     background: https://images.unsplash.com/photo-1502790671504-542ad42d5189?auto=format&fit=crop&w=2560&q=80
-    title: "test"
 
   custom.css: ""
   custom.js: ""
@@ -38,7 +37,7 @@ data:
             description: runs on external server (rpi5)
             ping: 10.0.0.140
 
-    - Storage:
+    - Storage(test):
         - OpenMediaVault:
             icon: openmediavault.png
             href: http://10.0.0.140:8080/#/dashboard
