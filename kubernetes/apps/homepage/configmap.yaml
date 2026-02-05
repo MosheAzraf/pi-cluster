@@ -56,6 +56,12 @@ data:
             description: network-wide DNS filtering and ad blocking
             ping: 10.0.0.140
 
+            widget:
+              type: adguard 
+              url: http://10.0.0.140
+              username: ${ADGUARD_USERNAME}
+              password: ${ADGUARD_PASSWORD}
+
         - OpenMediaVault:
             icon: openmediavault.png
             href: http://10.0.0.140:8080/#/dashboard

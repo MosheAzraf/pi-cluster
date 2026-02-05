@@ -11,8 +11,8 @@ spec:
     targetRevision: main
     path: kubernetes/apps/homepage/
     #enable this when adding secret file
-    #plugin:
-    #  name: ksops
+    plugin:
+      name: ksops
 
   destination:
     server: https://kubernetes.default.svc
