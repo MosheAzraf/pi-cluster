@@ -59,4 +59,5 @@ configs:
   params:
     server.insecure: true
   cm:
-    kustomize.buildOptions: "--enable-exec"
+    kustomize.buildOptions: "--enable-alpha-plugins --enable-exec"
+
