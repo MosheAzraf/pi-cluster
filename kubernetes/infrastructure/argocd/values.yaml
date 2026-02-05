@@ -1,4 +1,4 @@
-#HA mode
+# HA mode
 redis-ha:
   enabled: true
 
@@ -14,41 +14,43 @@ repoServer:
   autoscaling:
     enabled: true
     minReplicas: 2
-  
-  #ksops
+
+  # volumes
   volumes:
-    - name: custom-tools
-      emptyDir: {}
     - name: sops-age
       secret:
         secretName: sops-age
-  initContainers:
-  - name: install-ksops
-    image: alpine:latest
-    command: ["/bin/sh", "-c"]
-    args:
-      - |
-        wget https://github.com/viaduct-ai/kustomize-sops/releases/download/v4.4.0/ksops_4.4.0_Linux_arm64.tar.gz
-        tar -xzf ksops_4.4.0_Linux_arm64.tar.gz
-        mv ksops /custom-tools/
-        chmod +x /custom-tools/ksops
-    volumeMounts:
-      - mountPath: /custom-tools
-        name: custom-tools
+    - name: kustomize-plugin
+      emptyDir: {}
 
+  # install ksops into kustomize plugin path
+  initContainers:
+    - name: install-ksops
+      image: alpine:latest
+      command: ["/bin/sh", "-c"]
+      args:
+        - |
+          wget https://github.com/viaduct-ai/kustomize-sops/releases/download/v4.4.0/ksops_4.4.0_Linux_arm64.tar.gz
+          tar -xzf ksops_4.4.0_Linux_arm64.tar.gz
+          mkdir -p /.config/kustomize/plugin/viaduct.ai/v1/ksops
+          mv ksops /.config/kustomize/plugin/viaduct.ai/v1/ksops/ksops
+          chmod +x /.config/kustomize/plugin/viaduct.ai/v1/ksops/ksops
+
+  # env vars
   env:
     - name: SOPS_AGE_KEY_FILE
       value: /.config/sops/age/keys.txt
     - name: XDG_CONFIG_HOME
       value: /.config
+    - name: KUSTOMIZE_PLUGIN_HOME
+      value: /.config/kustomize/plugin
 
+  # volume mounts
   volumeMounts:
-    - mountPath: /usr/local/bin/ksops
-      name: custom-tools
-      subPath: ksops
     - mountPath: /.config/sops/age
       name: sops-age
-  #end of ksops
+    - mountPath: /.config/kustomize/plugin
+      name: kustomize-plugin
 
 applicationSet:
   replicas: 2
@@ -58,4 +60,3 @@ configs:
     server.insecure: true
   cm:
     kustomize.buildOptions: "--enable-alpha-plugins --enable-exec"
-
