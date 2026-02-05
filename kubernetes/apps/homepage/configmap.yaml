@@ -67,6 +67,11 @@ data:
             href: http://10.0.0.140:8080/#/dashboard
             description: NAS and storage management on external server
             ping: 10.0.0.140
+            widget:
+              type: openmediavault
+              url: http://10.0.0.140:8080
+              username: {{HOMEPAGE_VAR_OMV_USERNAME}}
+              password: {{HOMEPAGE_VAR_OMV_PASSWORD}}
 
     - Apps:
       - Placeholder:
