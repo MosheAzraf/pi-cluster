@@ -35,7 +35,9 @@ repoServer:
           mkdir -p /.config/kustomize/plugin/viaduct.ai/v1/ksops
           mv ksops /.config/kustomize/plugin/viaduct.ai/v1/ksops/ksops
           chmod +x /.config/kustomize/plugin/viaduct.ai/v1/ksops/ksops
-
+      volumeMounts:
+        - mountPath: /.config/kustomize/plugin
+          name: kustomize-plugin
   # env vars
   env:
     - name: SOPS_AGE_KEY_FILE
@@ -60,4 +62,3 @@ configs:
     server.insecure: true
   cm:
     kustomize.buildOptions: "--enable-alpha-plugins --enable-exec"
-
