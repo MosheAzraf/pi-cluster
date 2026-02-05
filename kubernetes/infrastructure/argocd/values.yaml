@@ -23,7 +23,7 @@ repoServer:
     - name: kustomize-plugin
       emptyDir: {}
 
-  # install ksops into kustomize plugin path
+  # install ksops as kustomize EXEC plugin
   initContainers:
     - name: install-ksops
       image: alpine:latest
@@ -59,4 +59,4 @@ configs:
   params:
     server.insecure: true
   cm:
-    kustomize.buildOptions: "--enable-alpha-plugins --enable-exec"
+    kustomize.buildOptions: "--enable-exec"
