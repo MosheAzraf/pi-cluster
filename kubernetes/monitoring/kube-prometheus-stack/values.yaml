@@ -1,9 +1,9 @@
-#ha configuration 
+#ha configuration
 
 prometheus:
   prometheusSpec:
     replicas: 2
-    # Prevents replicas from being scheduled on the same node for true HA
+    # Ensures replicas are scheduled on different nodes for High Availability
     affinity:
       podAntiAffinity:
         requiredDuringSchedulingIgnoredDuringExecution:
@@ -12,7 +12,7 @@ prometheus:
                 app.kubernetes.io/name: prometheus
             topologyKey: kubernetes.io/hostname
     
-    # Internal cluster storage (k3s default) to persist data across pod restarts
+    # Persist metrics data using k3s default local-path storage
     storageSpec:
       volumeClaimTemplate:
         spec:
@@ -22,7 +22,7 @@ prometheus:
             requests:
               storage: 10Gi
 
-    # Optimized resources for Raspberry Pi nodes
+    # Resource optimization for Raspberry Pi nodes
     resources:
       requests:
         cpu: 200m
@@ -34,7 +34,7 @@ prometheus:
 alertmanager:
   alertmanagerSpec:
     replicas: 2
-    # Staggered wait time between replicas to prevent duplicate notifications (Gossip protocol)
+    # Gossip protocol timeout to prevent duplicate alerts
     clusterPeerTimeout: 15s
     affinity:
       podAntiAffinity:
@@ -52,8 +52,15 @@ alertmanager:
         memory: 256Mi
 
 grafana:
-  # Single replica used to avoid dashboard/DB sync issues without an external database
   replicas: 1 
+  # Increase delay to handle slow plugin installation/DB migrations on Pi
+  readinessProbe:
+    initialDelaySeconds: 90
+    periodSeconds: 10
+  livenessProbe:
+    initialDelaySeconds: 90
+    periodSeconds: 10
+    
   resources:
     requests:
       cpu: 100m
