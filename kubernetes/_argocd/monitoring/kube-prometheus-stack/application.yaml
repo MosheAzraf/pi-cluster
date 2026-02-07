@@ -30,3 +30,11 @@ spec:
     syncOptions:
       - CreateNamespace=true
       - ServerSideApply=true
+      - RespectIgnoreDifferences=true
+
+  ignoreDifferences:
+    - group: apps
+      kind: Deployment
+      name: monitoring-kube-prometheus-stack-grafana
+      jsonPointers:
+        - /spec/template/metadata/annotations/checksum~1secret
