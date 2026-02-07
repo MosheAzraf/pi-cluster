@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: monitoring-prom-stack
+  name: monitoring-kube-prometheus-stack
   namespace: argocd
 spec:
   project: default
@@ -12,7 +12,7 @@ spec:
       helm:
         skipSchemaValidation: true
         valueFiles:
-          - $values/kubernetes/monitoring/prom-stack/values.yaml
+          - $values/kubernetes/monitoring/kube-prometheus-stack/values.yaml
     - repoURL: https://github.com/MosheAzraf/pi-cluster.git
       targetRevision: main
       ref: values
