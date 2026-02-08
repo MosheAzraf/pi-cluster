@@ -2,18 +2,16 @@ grafana:
   enabled: true
   replicas: 1
 
+  adminPassword: admin
+
   persistence:
     enabled: true
-    storageClassName: "local-path" 
+    storageClassName: "local-path"
     size: 5Gi
 
-  admin:
-    existingSecret: grafana-admin
-    userKey: admin-user
-    passwordKey: admin-password
-    
   service:
     type: ClusterIP
+
 
 prometheus:
   prometheusSpec:
@@ -37,11 +35,12 @@ prometheus:
     storageSpec:
       volumeClaimTemplate:
         spec:
-          storageClassName: "local-path" 
+          storageClassName: "local-path"
           accessModes: ["ReadWriteOnce"]
           resources:
             requests:
               storage: 20Gi
+
 
 alertmanager:
   enabled: true
@@ -55,6 +54,7 @@ alertmanager:
                 app.kubernetes.io/name: alertmanager
             topologyKey: kubernetes.io/hostname
 
+
 kubeStateMetrics:
   enabled: true
 nodeExporter:
@@ -67,8 +67,10 @@ kubeScheduler:
   enabled: true
 kubeProxy:
   enabled: true
+
 defaultRules:
   create: true
+
 prometheusOperator:
   admissionWebhooks:
     enabled: true

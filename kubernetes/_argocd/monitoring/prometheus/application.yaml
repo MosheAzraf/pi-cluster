@@ -7,7 +7,6 @@ spec:
   project: default
 
   sources:
-    #Helm chart
     - repoURL: https://prometheus-community.github.io/helm-charts
       chart: kube-prometheus-stack
       targetRevision: 81.5.0
@@ -16,16 +15,9 @@ spec:
         valueFiles:
           - $values/kubernetes/monitoring/prometheus/values.yaml
 
-    #Values reference
     - repoURL: https://github.com/MosheAzraf/pi-cluster.git
       targetRevision: main
       ref: values
-
-    #KSOPS
-    - repoURL: https://github.com/MosheAzraf/pi-cluster.git
-      targetRevision: main
-      path: kubernetes/monitoring/prometheus
-      kustomize: {}
 
   destination:
     server: https://kubernetes.default.svc
