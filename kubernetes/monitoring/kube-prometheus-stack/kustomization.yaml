@@ -12,5 +12,6 @@ helmCharts:
     valueFiles:
       - values.yaml 
 
+# ניהול ה-Secret המוצפן (KSOPS)
 generators:
   - grafana-secret.enc.yaml
