@@ -1,2 +1,16 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: monitoring
+
+helmCharts:
+  - name: kube-prometheus-stack
+    repo: https://prometheus-community.github.io/helm-charts
+    releaseName: monitoring
+    version: 81.5.0
+    namespace: monitoring
+    valueFiles:
+      - values.yaml 
+
 generators:
   - grafana-secret.enc.yaml
