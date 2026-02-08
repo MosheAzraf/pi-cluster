@@ -1,0 +1,2 @@
+generators:
+  - grafana-secret.enc.yaml

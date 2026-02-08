@@ -18,6 +18,9 @@ spec:
     - repoURL: https://github.com/MosheAzraf/pi-cluster.git
       targetRevision: main
       ref: values
+    - repoURL: https://github.com/MosheAzraf/pi-cluster.git
+      targetRevision: main
+      path: kubernetes/monitoring/kube-prometheus-stack
 
   destination:
     server: https://kubernetes.default.svc

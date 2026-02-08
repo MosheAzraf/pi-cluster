@@ -1,4 +1,4 @@
-#ha configuration
+# ha configuration
 
 prometheus:
   prometheusSpec:
@@ -60,6 +60,11 @@ grafana:
   livenessProbe:
     initialDelaySeconds: 90
     periodSeconds: 10
+    
+  admin:
+    existingSecret: "grafana-admin-credentials"
+    userKey: admin-user
+    passwordKey: admin-password
     
   resources:
     requests:
