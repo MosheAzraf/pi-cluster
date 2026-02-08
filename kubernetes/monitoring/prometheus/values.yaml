@@ -7,6 +7,11 @@ grafana:
     storageClassName: "local-path" 
     size: 5Gi
 
+  admin:
+    existingSecret: grafana-admin
+    userKey: admin-user
+    passwordKey: admin-password
+    
   service:
     type: ClusterIP
 
