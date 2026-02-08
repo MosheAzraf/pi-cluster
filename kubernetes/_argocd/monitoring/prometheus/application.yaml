@@ -5,6 +5,7 @@ metadata:
   namespace: argocd
 spec:
   project: default
+
   sources:
     - repoURL: https://prometheus-community.github.io/helm-charts
       chart: kube-prometheus-stack
@@ -28,3 +29,11 @@ spec:
     syncOptions:
       - CreateNamespace=true
       - ServerSideApply=true
+
+  ignoreDifferences:
+    - group: ""
+      kind: Secret
+      name: monitoring-prometheus-grafana
+      namespace: monitoring
+      jsonPointers:
+        - /data
