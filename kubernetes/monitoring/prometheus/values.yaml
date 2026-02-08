@@ -1,0 +1,69 @@
+grafana:
+  enabled: true
+  replicas: 1
+
+  persistence:
+    enabled: true
+    storageClassName: "local-path" 
+    size: 5Gi
+
+  service:
+    type: ClusterIP
+
+prometheus:
+  prometheusSpec:
+    replicas: 2
+    retention: 10d
+    scrapeInterval: 30s
+    evaluationInterval: 30s
+
+    serviceMonitorSelectorNilUsesHelmValues: false
+    podMonitorSelectorNilUsesHelmValues: false
+    ruleSelectorNilUsesHelmValues: false
+
+    affinity:
+      podAntiAffinity:
+        requiredDuringSchedulingIgnoredDuringExecution:
+          - labelSelector:
+              matchLabels:
+                app.kubernetes.io/name: prometheus
+            topologyKey: kubernetes.io/hostname
+
+    storageSpec:
+      volumeClaimTemplate:
+        spec:
+          storageClassName: "local-path" 
+          accessModes: ["ReadWriteOnce"]
+          resources:
+            requests:
+              storage: 20Gi
+
+alertmanager:
+  enabled: true
+  alertmanagerSpec:
+    replicas: 2
+    affinity:
+      podAntiAffinity:
+        requiredDuringSchedulingIgnoredDuringExecution:
+          - labelSelector:
+              matchLabels:
+                app.kubernetes.io/name: alertmanager
+            topologyKey: kubernetes.io/hostname
+
+kubeStateMetrics:
+  enabled: true
+nodeExporter:
+  enabled: true
+kubeApiServer:
+  enabled: true
+kubeControllerManager:
+  enabled: true
+kubeScheduler:
+  enabled: true
+kubeProxy:
+  enabled: true
+defaultRules:
+  create: true
+prometheusOperator:
+  admissionWebhooks:
+    enabled: true
