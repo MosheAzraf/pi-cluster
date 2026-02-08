@@ -3,6 +3,7 @@ grafana:
   replicas: 1
 
   adminUser: admin
+  adminPassword: admin
 
   persistence:
     enabled: true
