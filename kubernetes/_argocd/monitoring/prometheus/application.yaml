@@ -25,8 +25,7 @@ spec:
     - repoURL: https://github.com/MosheAzraf/pi-cluster.git
       targetRevision: main
       path: kubernetes/monitoring/prometheus
-      kustomize:
-        enable: true
+      kustomize: {}
 
   destination:
     server: https://kubernetes.default.svc
