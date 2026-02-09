@@ -20,6 +20,8 @@ prometheus:
     retention: 10d
     scrapeInterval: 30s
     evaluationInterval: 30s
+    externalLabels:
+      cluster: homelab
 
     serviceMonitorSelectorNilUsesHelmValues: false
     podMonitorSelectorNilUsesHelmValues: false
