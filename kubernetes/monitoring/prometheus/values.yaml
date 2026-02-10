@@ -17,9 +17,9 @@ grafana:
 prometheus:
   prometheusSpec:
     replicas: 2
-    retention: 10d
-    scrapeInterval: 30s
-    evaluationInterval: 30s
+    retention: 3d
+    scrapeInterval: 60s
+    evaluationInterval: 60s
     externalLabels:
       cluster: homelab
 
@@ -65,14 +65,14 @@ nodeExporter:
 kubeApiServer:
   enabled: true
 kubeControllerManager:
-  enabled: true
+  enabled: false
 kubeScheduler:
-  enabled: true
+  enabled: false
 kubeProxy:
-  enabled: true
+  enabled: false
 
 defaultRules:
-  create: true
+  create: false
 
 prometheusOperator:
   admissionWebhooks:
