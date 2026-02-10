@@ -15,10 +15,13 @@ data:
   custom.js: ""
 
   bookmarks.yaml: |
-    - Developer:
+    - External Bookmarks:
         - Github:
             - abbr: GH
               href: https://github.com/MosheAzraf
+        - LinkedIn
+            - abbr: IN
+              href https://www.linkedin.com
 
   services.yaml: |
     - Cluster Services:
