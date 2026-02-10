@@ -51,7 +51,7 @@ data:
             description: metrics collection
             widget:
               type: prometheusmetric
-              url: https://prometheus.home.lab
+              url: http://monitoring-prometheus-kube-prometheus.monitoring.svc:9090
               refreshInterval: 10000
               metrics:
                 - label: Active Alerts
