@@ -19,11 +19,14 @@ spec:
       targetRevision: main
       ref: values
     
-    #certificates and ingress routes
     - repoURL: https://github.com/MosheAzraf/pi-cluster.git
       targetRevision: main
-      path: kubernetes/monitoring/prometheus
+      path: kubernetes/monitoring/prometheus/certificates
 
+    - repoURL: https://github.com/MosheAzraf/pi-cluster.git
+      targetRevision: main
+      path: kubernetes/monitoring/prometheus/ingress-routes
+    
   destination:
     server: https://kubernetes.default.svc
     namespace: monitoring

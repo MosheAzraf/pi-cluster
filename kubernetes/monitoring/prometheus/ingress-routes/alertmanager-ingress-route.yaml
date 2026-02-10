@@ -1,0 +1,16 @@
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: alertmanager
+  namespace: monitoring
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - kind: Rule
+      match: Host(`alertmanager.home.lab`)
+      services:
+        - name: monitoring-prometheus-kube-alertmanager
+          port: 9093
+  tls:
+    secretName: alertmanager-tls
