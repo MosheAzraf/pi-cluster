@@ -41,7 +41,7 @@ data:
               type: grafana
               version: 2
               alerts: alertmanager
-              url: https://grafana.home.lab
+              url: url: http://monitoring-prometheus-grafana.monitoring.svc:80
               username: {{HOMEPAGE_VAR_GRAFANA_USERNAME}}
               password: {{HOMEPAGE_VAR_GRAFANA_PASSWORD}}
 
