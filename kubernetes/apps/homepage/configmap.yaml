@@ -37,11 +37,28 @@ data:
             icon: grafana.png
             href: https://grafana.home.lab/
             description: monitoring dashboards
+            widget:
+              type: grafana
+              version: 2
+              alerts: alertmanager
+              url: https://grafana.home.lab
+              username: {{HOMEPAGE_VAR_GRAFANA_USERNAME}}
+              password: {{HOMEPAGE_VAR_GRAFANA_PASSWORD}}
 
         - Prometheus:
             icon: prometheus.png
             href: https://prometheus.home.lab/
             description: metrics collection
+            widget:
+              type: prometheusmetric
+              url: https://prometheus.home.lab
+              refreshInterval: 10000
+              metrics:
+                - label: Active Alerts
+                  query: alertmanager_alerts{state="active"}
+
+                - label: Targets Up
+                  query: prometheus_target_interval_length_seconds_count
 
     - Data Services:
         - PostgreSQL (CloudNativePG):
