@@ -52,13 +52,9 @@ data:
             widget:
               type: prometheusmetric
               url: http://monitoring-prometheus-kube-prometheus.monitoring.svc:9090
-              refreshInterval: 10000
               metrics:
-                - label: Active Alerts
+                - label: Active Alerts   
                   query: alertmanager_alerts{state="active"}
-
-                - label: Targets Up
-                  query: prometheus_target_interval_length_seconds_count
 
     - Data Services:
         - PostgreSQL (CloudNativePG):
