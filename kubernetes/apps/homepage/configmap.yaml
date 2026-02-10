@@ -19,9 +19,9 @@ data:
         - Github:
             - abbr: GH
               href: https://github.com/MosheAzraf
-        - LinkedIn
+        - LinkedIn:
             - abbr: IN
-              href https://www.linkedin.com
+              href: https://www.linkedin.com
 
   services.yaml: |
     - Cluster Services:
