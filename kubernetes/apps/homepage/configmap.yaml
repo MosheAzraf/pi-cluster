@@ -21,42 +21,30 @@ data:
               href: https://github.com/MosheAzraf
 
   services.yaml: |
-    - Platform:
+    - Cluster Services:
+        # Platform
         - ArgoCD:
             icon: argo-cd.png
             href: https://argocd.home.lab/
             description: GitOps continuous delivery for Kubernetes
-        
+
         - Traefik:
             icon: traefik.png
             href: https://traefik.home.lab/dashboard/
-            description: ingress controller and traffic routing for the cluster
+            description: ingress controller and traffic routing
 
-    - Observability:
+        # Observability
         - Grafana:
             icon: grafana.png
             href: https://grafana.home.lab/
             description: monitoring dashboards
-            widget:
-              type: grafana
-              version: 2
-              alerts: alertmanager
-              url: http://monitoring-prometheus-grafana.monitoring.svc:80
-              username: {{HOMEPAGE_VAR_GRAFANA_USERNAME}}
-              password: {{HOMEPAGE_VAR_GRAFANA_PASSWORD}}
 
         - Prometheus:
             icon: prometheus.png
             href: https://prometheus.home.lab/
             description: metrics collection
-            widget:
-              type: prometheusmetric
-              url: http://monitoring-prometheus-kube-prometheus.monitoring.svc:9090
-              metrics:
-                - label: Active Alerts   
-                  query: alertmanager_alerts{state="active"}
 
-    - Data Services:
+        # Data
         - PostgreSQL (CloudNativePG):
             icon: postgres.png
             href: https://pg.home.lab/
@@ -67,28 +55,14 @@ data:
             icon: adguard-home.png
             href: http://10.0.0.140/
             description: network-wide DNS filtering and ad blocking
-            ping: 10.0.0.140
-
-            widget:
-              type: adguard 
-              url: http://10.0.0.140
-              username: {{HOMEPAGE_VAR_ADGUARD_USERNAME}}
-              password: {{HOMEPAGE_VAR_ADGUARD_PASSWORD}}
 
         - OpenMediaVault:
             icon: openmediavault.png
             href: http://10.0.0.140:8080/#/dashboard
-            description: NAS and storage management on external server
-            ping: 10.0.0.140
-            widget:
-              type: openmediavault
-              url: http://10.0.0.140:8080
-              username: {{HOMEPAGE_VAR_OMV_USERNAME}}
-              password: {{HOMEPAGE_VAR_OMV_PASSWORD}}
-              method: services.getStatus
+            description: NAS and storage management
 
     - Apps:
-      - Placeholder:
+        - Placeholder:
             icon: mdi-apps
             href: "#"
             description: applications will be added here
@@ -100,13 +74,12 @@ data:
           cpu: true
           memory: true
           showLabel: true
-          label: "cluster"
+          label: cluster
         nodes:
           show: true
           cpu: true
           memory: true
           showLabel: true
-
 
     - search:
         provider: duckduckgo
