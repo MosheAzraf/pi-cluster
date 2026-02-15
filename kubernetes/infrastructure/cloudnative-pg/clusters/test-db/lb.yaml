@@ -1,3 +1,10 @@
+#it is recommended not to expose the db outside of the cluster and let an 
+#internal app access it. 
+#this load balancer is only for testing.
+#an example for internal connection can be:
+#test-db-rw.cloudnative-pg.svc.cluster.local
+
+
 apiVersion: v1
 kind: Service
 metadata:
