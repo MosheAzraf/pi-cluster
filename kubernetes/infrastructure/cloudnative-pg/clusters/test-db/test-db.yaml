@@ -12,3 +12,24 @@ spec:
 
   monitoring:
     enablePodMonitor: true
+
+#example using resources limits
+# cluster:
+#   name: "postgres-cluster"
+
+# instances: 3
+
+# resources:
+#   limits:
+#     cpu: 500m
+#     memory: 1Gi
+#   requests:
+#     cpu: 100m
+#     memory: 1Gi
+
+# storage:
+#   size: 8Gi
+#   accessMode: ReadWriteOnce
+
+# backup:
+#   enabled: false
