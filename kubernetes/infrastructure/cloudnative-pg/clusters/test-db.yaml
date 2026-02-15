@@ -1,0 +1,14 @@
+apiVersion: postgresql.cnpg.io/v1
+kind: Cluster
+metadata:
+  name: test-db
+  namespace: cloudnative-pg
+spec:
+  instances: 1
+
+  storage:
+    size: 2Gi
+    storageClass: local-path
+
+  monitoring:
+    enablePodMonitor: true
