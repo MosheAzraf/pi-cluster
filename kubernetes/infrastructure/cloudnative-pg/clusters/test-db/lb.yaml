@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: test-db-external
+  namespace: cloudnative-pg
+spec:
+  type: LoadBalancer
+  loadBalancerIP: 10.0.0.205
+  ports:
+    - name: postgres
+      port: 5432
+      targetPort: 5432
+  selector:
+    cnpg.io/cluster: test-db
+    cnpg.io/instanceRole: primary
