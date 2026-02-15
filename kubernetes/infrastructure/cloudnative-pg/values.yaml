@@ -1,3 +1,6 @@
+crds:
+  create: true
+
 replicaCount: 2
 
 podDisruptionBudget:
