@@ -32,16 +32,14 @@ prometheus:
     affinity:
       podAntiAffinity:
         requiredDuringSchedulingIgnoredDuringExecution:
-          - labelSelector:
-              matchLabels:
-                app.kubernetes.io/name: prometheus
-            topologyKey: kubernetes.io/hostname
+          - topologyKey: kubernetes.io/hostname
 
     storageSpec:
       volumeClaimTemplate:
         spec:
           storageClassName: "local-path"
-          accessModes: ["ReadWriteOnce"]
+          accessModes:
+            - ReadWriteOnce
           resources:
             requests:
               storage: 20Gi
@@ -54,27 +52,31 @@ alertmanager:
     affinity:
       podAntiAffinity:
         requiredDuringSchedulingIgnoredDuringExecution:
-          - labelSelector:
-              matchLabels:
-                app.kubernetes.io/name: alertmanager
-            topologyKey: kubernetes.io/hostname
+          - topologyKey: kubernetes.io/hostname
 
 
 kubeStateMetrics:
   enabled: true
+
 nodeExporter:
   enabled: true
+
 kubeApiServer:
   enabled: true
+
 kubeControllerManager:
   enabled: false
+
 kubeScheduler:
   enabled: false
+
 kubeProxy:
   enabled: false
 
+
 defaultRules:
   create: false
+
 
 prometheusOperator:
   admissionWebhooks:
