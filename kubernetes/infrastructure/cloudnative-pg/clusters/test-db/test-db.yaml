@@ -10,13 +10,16 @@ spec:
   superuserSecret:
     name: test-db-superuser
 
+  bootstrap:
+    initdb:
+      database: app
+      owner: app
+      secret:
+        name: test-db-app
+
   storage:
     size: 2Gi
     storageClass: local-path
-
-  monitoring:
-    enablePodMonitor: true
-
 
 
 # apiVersion: postgresql.cnpg.io/v1
