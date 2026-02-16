@@ -9,7 +9,7 @@ grafana:
 
   persistence:
     enabled: true
-    storageClassName: "local-path"
+    storageClassName: local-path
     size: 5Gi
 
   service:
@@ -22,6 +22,7 @@ prometheus:
     retention: 3d
     scrapeInterval: 60s
     evaluationInterval: 60s
+
     externalLabels:
       cluster: homelab
 
@@ -29,15 +30,10 @@ prometheus:
     podMonitorSelectorNilUsesHelmValues: false
     ruleSelectorNilUsesHelmValues: false
 
-    affinity:
-      podAntiAffinity:
-        requiredDuringSchedulingIgnoredDuringExecution:
-          - topologyKey: kubernetes.io/hostname
-
     storageSpec:
       volumeClaimTemplate:
         spec:
-          storageClassName: "local-path"
+          storageClassName: local-path
           accessModes:
             - ReadWriteOnce
           resources:
@@ -49,10 +45,6 @@ alertmanager:
   enabled: true
   alertmanagerSpec:
     replicas: 2
-    affinity:
-      podAntiAffinity:
-        requiredDuringSchedulingIgnoredDuringExecution:
-          - topologyKey: kubernetes.io/hostname
 
 
 kubeStateMetrics:
