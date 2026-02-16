@@ -6,27 +6,13 @@ metadata:
 spec:
   project: default
 
-  sources:
-    - repoURL: https://prometheus-community.github.io/helm-charts
-      chart: kube-prometheus-stack
-      targetRevision: 81.5.0
-      helm:
-        skipSchemaValidation: true
-        valueFiles:
-          - $values/kubernetes/monitoring/prometheus/values.yaml
+  source:
+    repoURL: https://github.com/MosheAzraf/pi-cluster.git
+    targetRevision: main
+    path: kubernetes/monitoring/prometheus
+    plugin:
+      name: ksops
 
-    - repoURL: https://github.com/MosheAzraf/pi-cluster.git
-      targetRevision: main
-      ref: values
-    
-    - repoURL: https://github.com/MosheAzraf/pi-cluster.git
-      targetRevision: main
-      path: kubernetes/monitoring/prometheus/certificates
-
-    - repoURL: https://github.com/MosheAzraf/pi-cluster.git
-      targetRevision: main
-      path: kubernetes/monitoring/prometheus/ingress-routes
-    
   destination:
     server: https://kubernetes.default.svc
     namespace: monitoring
@@ -38,3 +24,53 @@ spec:
     syncOptions:
       - CreateNamespace=true
       - ServerSideApply=true
+
+
+
+
+
+
+
+
+#backup:
+# apiVersion: argoproj.io/v1alpha1
+# kind: Application
+# metadata:
+#   name: monitoring-prometheus
+#   namespace: argocd
+# spec:
+#   project: default
+
+#   sources:
+#     - repoURL: https://prometheus-community.github.io/helm-charts
+#       chart: kube-prometheus-stack
+#       targetRevision: 81.5.0
+#       helm:
+#         skipSchemaValidation: true
+#         valueFiles:
+#           - $values/kubernetes/monitoring/prometheus/values.yaml
+
+#     - repoURL: https://github.com/MosheAzraf/pi-cluster.git
+#       targetRevision: main
+#       ref: values
+    
+#     - repoURL: https://github.com/MosheAzraf/pi-cluster.git
+#       targetRevision: main
+#       path: kubernetes/monitoring/prometheus/certificates
+
+#     - repoURL: https://github.com/MosheAzraf/pi-cluster.git
+#       targetRevision: main
+#       path: kubernetes/monitoring/prometheus/ingress-routes
+    
+#   destination:
+#     server: https://kubernetes.default.svc
+#     namespace: monitoring
+
+#   syncPolicy:
+#     automated:
+#       prune: true
+#       selfHeal: true
+#     syncOptions:
+#       - CreateNamespace=true
+#       - ServerSideApply=true
+

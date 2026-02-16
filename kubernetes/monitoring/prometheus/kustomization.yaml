@@ -1,0 +1,19 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: monitoring
+
+generators:
+  - secrets/ksops.yaml
+
+resources:
+  - certificates
+  - ingress-routes
+
+helmCharts:
+  - name: kube-prometheus-stack
+    repo: https://prometheus-community.github.io/helm-charts
+    version: 81.5.0
+    releaseName: kube-prometheus
+    namespace: monitoring
+    valuesFile: values.yaml
