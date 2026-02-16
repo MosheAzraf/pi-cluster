@@ -5,7 +5,9 @@ metadata:
   namespace: argocd
 spec:
   project: default
+
   sources:
+    # Operator (Helm)
     - repoURL: https://cloudnative-pg.github.io/charts
       chart: cloudnative-pg
       targetRevision: v0.27.1
@@ -13,9 +15,16 @@ spec:
         skipSchemaValidation: true
         valueFiles:
           - $values/kubernetes/infrastructure/cloudnative-pg/values.yaml
+
+    # Values reference
     - repoURL: https://github.com/MosheAzraf/pi-cluster.git
       targetRevision: main
       ref: values
+
+    # Clusters + Secrets (Kustomize root)
+    - repoURL: https://github.com/MosheAzraf/pi-cluster.git
+      targetRevision: main
+      path: kubernetes/infrastructure/cloudnative-pg
 
   destination:
     server: https://kubernetes.default.svc
