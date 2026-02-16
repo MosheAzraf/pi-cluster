@@ -10,7 +10,8 @@ spec:
     - kind: Rule
       match: Host(`prometheus.home.lab`)
       services:
-        - name: monitoring-prometheus-kube-prometheus
+        - name: monitoring-kube-prome-prometheus
+
           port: 9090
   tls:
     secretName: prometheus-tls
