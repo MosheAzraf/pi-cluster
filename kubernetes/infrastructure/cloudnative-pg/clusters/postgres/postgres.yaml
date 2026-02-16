@@ -15,7 +15,7 @@ spec:
       database: app
       owner: app
       secret:
-        name: test-db-app
+        name: postgres-app
 
   storage:
     size: 2Gi
