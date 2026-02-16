@@ -10,7 +10,7 @@ spec:
     - kind: Rule
       match: Host(`alertmanager.home.lab`)
       services:
-        - name: monitoring-kube-prome-alertmanager
+        - name: monitoring-prometheus-kube-alertmanager
           port: 9093
   tls:
     secretName: alertmanager-tls

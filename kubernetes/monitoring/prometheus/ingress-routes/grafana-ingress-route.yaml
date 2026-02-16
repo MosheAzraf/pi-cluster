@@ -10,7 +10,7 @@ spec:
     - kind: Rule
       match: Host(`grafana.home.lab`)
       services:
-        - name: monitoring-grafana
+        - name: monitoring-prometheus-grafana
           port: 80
   tls:
     secretName: grafana-tls
