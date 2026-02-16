@@ -10,8 +10,6 @@ spec:
     repoURL: https://github.com/MosheAzraf/pi-cluster.git
     targetRevision: main
     path: kubernetes/monitoring/prometheus
-    plugin:
-      name: ksops
 
   destination:
     server: https://kubernetes.default.svc
@@ -24,8 +22,6 @@ spec:
     syncOptions:
       - CreateNamespace=true
       - ServerSideApply=true
-
-
 
 
 
