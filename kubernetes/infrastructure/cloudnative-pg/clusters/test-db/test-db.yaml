@@ -2,13 +2,13 @@
 apiVersion: postgresql.cnpg.io/v1
 kind: Cluster
 metadata:
-  name: test-db
+  name: postgres
   namespace: cloudnative-pg
 spec:
   instances: 1
 
   superuserSecret:
-    name: test-db-superuser
+    name: postgres-superuser
 
   bootstrap:
     initdb:
@@ -20,6 +20,7 @@ spec:
   storage:
     size: 2Gi
     storageClass: local-path
+
 
 
 # apiVersion: postgresql.cnpg.io/v1
