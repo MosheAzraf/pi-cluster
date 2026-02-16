@@ -1,3 +1,4 @@
+#example with encrypted secret using ksops
 apiVersion: postgresql.cnpg.io/v1
 kind: Cluster
 metadata:
@@ -6,12 +7,32 @@ metadata:
 spec:
   instances: 1
 
+  superuserSecret:
+    name: test-db-superuser
+
   storage:
     size: 2Gi
     storageClass: local-path
 
   monitoring:
     enablePodMonitor: true
+
+
+
+# apiVersion: postgresql.cnpg.io/v1
+# kind: Cluster
+# metadata:
+#   name: test-db
+#   namespace: cloudnative-pg
+# spec:
+#   instances: 1
+
+#   storage:
+#     size: 2Gi
+#     storageClass: local-path
+
+#   monitoring:
+#     enablePodMonitor: true
 
 #example using resources limits
 # cluster:
