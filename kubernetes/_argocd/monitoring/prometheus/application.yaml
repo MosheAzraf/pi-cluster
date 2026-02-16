@@ -6,10 +6,21 @@ metadata:
 spec:
   project: default
 
-  source:
-    repoURL: https://github.com/MosheAzraf/pi-cluster.git
-    targetRevision: main
-    path: kubernetes/monitoring/prometheus
+  sources:
+    - repoURL: https://prometheus-community.github.io/helm-charts
+      chart: kube-prometheus-stack
+      targetRevision: 81.5.0
+      helm:
+        valueFiles:
+          - $values/kubernetes/monitoring/prometheus/values.yaml
+
+    - repoURL: https://github.com/MosheAzraf/pi-cluster.git
+      targetRevision: main
+      ref: values
+
+    - repoURL: https://github.com/MosheAzraf/pi-cluster.git
+      targetRevision: main
+      path: kubernetes/monitoring/prometheus
 
   destination:
     server: https://kubernetes.default.svc
