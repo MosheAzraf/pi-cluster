@@ -21,15 +21,15 @@ spec:
     storageClass: local-path
 
   managed:
-  roles:
-    - name: linkding
-      ensure: present
-      login: true
-      inherit: true
-      connectionLimit: -1
-      superuser: false
-      passwordSecret:
-        name: linkding-db-secret
+    roles:
+      - name: linkding
+        ensure: present
+        login: true
+        inherit: true
+        connectionLimit: -1
+        superuser: false
+        passwordSecret:
+          name: linkding-db-secret
 
 
 
