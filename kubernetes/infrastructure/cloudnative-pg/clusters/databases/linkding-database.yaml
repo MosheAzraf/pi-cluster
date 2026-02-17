@@ -1,0 +1,11 @@
+apiVersion: postgresql.cnpg.io/v1
+kind: Database
+metadata:
+  name: postgres-linkding
+  namespace: cloudnative-pg
+spec:
+  name: linkding
+  owner: linkding
+  cluster:
+    name: postgres
+  databaseReclaimPolicy: delete

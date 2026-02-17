@@ -9,3 +9,4 @@ generators:
 #cluster
 resources:
   - clusters/postgres
+  - clusters/databases
