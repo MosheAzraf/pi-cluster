@@ -3,6 +3,8 @@ kind: Database
 metadata:
   name: postgres-linkding
   namespace: cloudnative-pg
+  annotations:
+    argocd.argoproj.io/sync-wave: "1"
 spec:
   name: linkding
   owner: linkding
