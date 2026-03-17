@@ -18,7 +18,7 @@ spec:
       owner: postgres
 
   storage:
-    size: 10Gi
+    size: 2Gi
     storageClass: local-path
 
   managed:
