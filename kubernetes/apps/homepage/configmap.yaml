@@ -48,9 +48,9 @@ data:
             description: metrics collection
 
         # Data
-        - PostgreSQL (CloudNativePG):
+        - PgAdmin (CloudNativePG):
             icon: postgres.png
-            href: https://pg.home.lab/
+            href: https://pgadmin.home.lab/
             description: in-cluster database
 
     - External Services (Pi5):
@@ -65,10 +65,10 @@ data:
             description: NAS and storage management
 
     - Apps:
-        - Placeholder:
-            icon: mdi-apps
-            href: "#"
-            description: applications will be added here
+        - linkeding:
+            icon: linkding.png
+            href: https://linkding.home.lab/
+            description: Bookmark manager
 
   widgets.yaml: |
     - kubernetes:
