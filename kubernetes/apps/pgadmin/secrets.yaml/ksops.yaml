@@ -1,0 +1,6 @@
+apiVersion: viaduct.ai/v1
+kind: ksops
+metadata:
+  name: pgadmin-secret
+files:
+  - secrets/pgadmin-secret.enc.yaml

@@ -1,0 +1,17 @@
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: pgadmin
+  namespace: pgadmin
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - kind: Rule
+      match: Host(`pgadmin.home.lab`)
+      services:
+        - kind: Service
+          name: pgadmin
+          port: 80
+  tls:
+    secretName: pgadmin-tls
