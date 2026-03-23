@@ -2,54 +2,106 @@
 
 `enableSuperuserAccess: true` together with `superuserSecret` should allow login with the `postgres` user.
 
-In my case, even though the Secret was configured correctly, password login still failed.
+In practice, even when the Secret is configured correctly, password authentication may still fail.
 
-### What it looked like
-Trying to connect with:
+---
+
+### What it looks like
 
 ```bash
 PGPASSWORD='strongpassword' psql -h postgres-rw -U postgres -d postgres
 ```
-
-returned:
 
 ```text
 FATAL: password authentication failed for user "postgres"
 ```
 
+---
+
 ### Why this happens
-The Secret may exist and be referenced correctly, but the password is not always applied in practice to the postgres user inside PostgreSQL.
+
+The Secret exists and is referenced, but the password is not always applied to the `postgres` role inside PostgreSQL.
 
 That means:
-- `enableSuperuserAccess` is enabled
-- the Secret exists
-- but the password was not actually synced to the `postgres` role
+- `enableSuperuserAccess` is enabled  
+- the Secret exists  
+- but the actual role password was not updated  
+
+---
 
 ### How to fix it
-Connect locally to PostgreSQL from the main pod and update the password manually:
+
+1. Find the primary pod:
 
 ```bash
-kubectl exec -it -n cloudnative-pg postgres-1 -- bash
-psql -U postgres -d postgres
+kubectl exec -it -n cloudnative-pg postgres-1 -- psql -U postgres -d postgres -c "select pg_is_in_recovery();"
+kubectl exec -it -n cloudnative-pg postgres-2 -- psql -U postgres -d postgres -c "select pg_is_in_recovery();"
 ```
 
-Inside `psql`:
+- `t` → replica  
+- `f` → primary  
+
+---
+
+2. Connect to the primary pod:
+
+```bash
+kubectl exec -it -n cloudnative-pg <PRIMARY_POD> -- psql -U postgres -d postgres
+```
+
+---
+
+3. Update the password:
 
 ```sql
 ALTER USER postgres WITH PASSWORD 'strongpassword';
 ```
 
-Then test again:
+---
+
+4. Verify:
 
 ```bash
-PGPASSWORD='strongpassword' psql -h postgres-rw -U postgres -d postgres
+kubectl exec -it -n cloudnative-pg postgres-1 -- bash -c "PGPASSWORD='strongpassword' psql -h postgres-rw -U postgres -d postgres"
 ```
 
 If the connection succeeds, the issue is resolved.
 
-## Note:
+---
 
-Superuser network access is disabled by default in CloudNativePG and should be enabled only when really needed for administrative or troubleshooting purposes.
+## Connecting to a specific database
 
-This setup is intended for learning, testing, or temporary operational access. It is not recommended as the default approach for production environments.
+To connect to a specific database, change only the database name and user.
 
+### Example (linkding)
+
+```bash
+PGPASSWORD='<PASSWORD>' psql -h postgres-rw -U linkding -d linkding
+```
+
+### In pgAdmin
+
+- Host: postgres-rw.cloudnative-pg.svc.cluster.local
+- Port: 5432
+- Database: linkding
+- Username: linkding
+- Password: from `linkding-db-secret`
+
+### List available databases
+
+```sql
+\l
+```
+
+---
+
+## Note
+
+- Running `ALTER USER` on a replica will fail with:
+  cannot execute ALTER ROLE in a read-only transaction
+
+- You must execute it on the primary node.
+
+- Superuser network access is disabled by default in CloudNativePG and should be enabled only when really needed.
+
+This setup is suitable for learning and troubleshooting, not as a production default.
