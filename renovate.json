@@ -1,8 +1,9 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "enabledManagers": ["argocd", "kubernetes"],
-  "prHourlyLimit": 10,
-  "prConcurrentLimit": 10,
+  "prHourlyLimit": 5,
+  "prConcurrentLimit": 5,
+  "rebaseWhen": "auto",
   "argocd": {
     "managerFilePatterns": ["/kubernetes/_argocd/.+\\.ya?ml$/"]
   },
