@@ -1,13 +1,15 @@
 cronjob:
   schedule: "*/3 * * * *"
-  #schedule: "0 */6 * * *"
-  
+  # schedule: "0 */6 * * *"
+
 renovate:
   config: |
     {
-      "platform": "github",
-      "token": process.env.RENOVATE_TOKEN,
       "repositories": ["MosheAzraf/pi-cluster"]
     }
 
 existingSecret: renovate-secret
+
+env:
+  RENOVATE_PLATFORM: "github"
+  LOG_LEVEL: "debug"
