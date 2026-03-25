@@ -1,0 +1,11 @@
+cronjob:
+  schedule: "0 */6 * * *"
+
+renovate:
+  config: |
+    {
+      "platform": "github",
+      "repositories": ["MosheAzraf/pi-cluster"]
+    }
+
+existingSecret: renovate-secret

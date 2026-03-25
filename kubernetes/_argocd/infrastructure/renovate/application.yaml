@@ -1,0 +1,34 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: infra-renovate
+  namespace: argocd
+spec:
+  project: default
+
+  sources:
+    - repoURL: oci://ghcr.io/renovatebot/charts
+      chart: renovate
+      targetRevision: 46.84.8
+      helm:
+        valueFiles:
+          - $values/kubernetes/infrastructure/renovate/values.yaml
+
+    - repoURL: https://github.com/MosheAzraf/pi-cluster.git
+      targetRevision: main
+      ref: values
+
+    - repoURL: https://github.com/MosheAzraf/pi-cluster.git
+      targetRevision: main
+      path: kubernetes/infrastructure/renovate
+
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: renovate
+
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
