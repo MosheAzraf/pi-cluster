@@ -1,7 +1,14 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "enabledManagers": ["argocd"],
+  "enabledManagers": ["argocd", "kubernetes"],
   "argocd": {
     "managerFilePatterns": ["/kubernetes/_argocd/.+\\.ya?ml$/"]
+  },
+  "kubernetes": {
+    "fileMatch": [
+      "kubernetes/apps/.+\\.ya?ml$",
+      "kubernetes/infrastructure/.+\\.ya?ml$",
+      "kubernetes/monitoring/.+\\.ya?ml$"
+    ]
   }
 }
