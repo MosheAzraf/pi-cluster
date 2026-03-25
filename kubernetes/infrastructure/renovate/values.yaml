@@ -1,6 +1,5 @@
 cronjob:
-  schedule: "*/3 * * * *"
-  # schedule: "0 */6 * * *"
+  schedule: "0 0 * * *"
 
 renovate:
   config: |
