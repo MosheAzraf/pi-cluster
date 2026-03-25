@@ -1,32 +1,23 @@
-apiVersion: apps/v1
-kind: Deployment
+apiVersion: argoproj.io/v1alpha1
+kind: Application
 metadata:
-  name: nginx
-  namespace: nginx
+  name: app-nginx
+  namespace: argocd
 spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app: nginx
-  template:
-    metadata:
-      labels:
-        app: nginx
-    spec:
-      containers:
-        - name: nginx
-          image: nginx:1.23.0
-          ports:
-            - containerPort: 80
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: nginx
-  namespace: nginx
-spec:
-  selector:
-    app: nginx
-  ports:
-    - port: 80
-      targetPort: 80
+  project: default
+
+  sources:
+    - repoURL: https://github.com/MosheAzraf/pi-cluster.git
+      targetRevision: main
+      path: kubernetes/apps/nginx/
+
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: nginx
+
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
