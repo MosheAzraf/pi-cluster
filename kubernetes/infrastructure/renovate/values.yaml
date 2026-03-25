@@ -2,7 +2,6 @@ cronjob:
   schedule: "*/3 * * * *"
   #schedule: "0 */6 * * *"
   
-
 renovate:
   config: |
     {
