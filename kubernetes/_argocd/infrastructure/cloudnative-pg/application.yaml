@@ -10,7 +10,7 @@ spec:
     # Operator (Helm)
     - repoURL: https://cloudnative-pg.github.io/charts
       chart: cloudnative-pg
-      targetRevision: v0.27.1
+      targetRevision: 0.28.0
       helm:
         skipSchemaValidation: true
         valueFiles:
