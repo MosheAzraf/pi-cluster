@@ -1,7 +1,7 @@
 # Homelab Kubernetes Cluster (k3s)
 
-<img src="./images/cluster.jpeg" width="400" >
-<img src="./images/homepage.png" width="400" >
+<img src="./images/cluster.jpeg" width="500" >
+<img src="./images/homepage.png" width="500" >
 
 ## Overview
 3-node k3s Kubernetes cluster running on Raspberry Pi 4.  
