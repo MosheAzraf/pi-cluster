@@ -1,7 +1,9 @@
 # Homelab Kubernetes Cluster (k3s)
 
-<img src="./images/cluster.jpeg" width="500" >
-<img src="./images/homepage.png" width="500" >
+<div align="center">
+  <img src="./images/cluster.jpeg" width="600" >
+  <img src="./images/homepage.png" width="600" >
+</div>
 
 ## Overview
 3-node k3s Kubernetes cluster running on Raspberry Pi 4.  
@@ -18,7 +20,7 @@ Built to learn GitOps, monitoring, and manage a production-like environment loca
 - GitOps-based deployment model. 
 - Self-managed Argo CD deployed via Helm.
 - ksops + age for secret encryption and decryption. 
-- External Raspberry Pi 5 that runs AdGuard Home as DNS provider.
+- External Raspberry Pi 5 running OpenMediaVault, hosting AdGuard Home as the DNS provider.
 
 ---
 
@@ -29,9 +31,9 @@ Built to learn GitOps, monitoring, and manage a production-like environment loca
 - TLS: cert-manager (internal CA).  
 - Monitoring: Prometheus + Grafana. (kube-prometheus-stack).  
 - Database: CloudNativePG (PostgreSQL).  
-- Dashboard: homepage.  
+- Dashboard: homepage as entry UI for the applications and services.  
 - Automation: Renovate (dependency updates) and Reloader (auto-restart on config/secret changes).
-- Additional apps: HomePage(as entry UI for applications and services), linkding, pgAdmin.
+- Additional apps: linkding, pgAdmin.
   
 ---
 
@@ -48,7 +50,7 @@ Built to learn GitOps, monitoring, and manage a production-like environment loca
 - Internal domain: `*.home.lab`.  
 - Ingress managed by Traefik.  
 - TLS issued via cert-manager using internal ClusterIssuer.  
-- Services exposed internally (no public exposure due to CGNAT).  
+- Services and applications are exposed only within my home network, I chose not to expose them publicly.  
 
 ---
 
@@ -76,7 +78,7 @@ Built to learn GitOps, monitoring, and manage a production-like environment loca
 - Managing stateful workloads (PostgreSQL) in Kubernetes.  
 - Debugging cluster-level issues (networking, auth, resources).  
 - Trade-offs between “learning environments” and real production setups.  
-- Not every problem requires Kubernetes (avoiding over-engineering)  
+- Not every problem requires Kubernetes (avoiding over-engineering).  
 
 ---
 
