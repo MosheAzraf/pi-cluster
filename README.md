@@ -21,6 +21,9 @@ Built to learn GitOps, monitoring, and manage a production-like environment loca
 - ksops + age for secret encryption and decryption. 
 - External Raspberry Pi 5 running OpenMediaVault, hosting AdGuard Home as the DNS provider.
 
+> Note: The k3s cluster and Kube-VIP were set up manually from scratch.  
+> No prebuilt scripts or automation tools were used - this repository focuses on the deployed state, not the provisioning process.
+
 
 ## Stack
 - Kubernetes: k3s.  
