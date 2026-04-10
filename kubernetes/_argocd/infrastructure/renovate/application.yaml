@@ -9,7 +9,7 @@ spec:
   sources:
     - repoURL: https://docs.renovatebot.com/helm-charts
       chart: renovate
-      targetRevision: 46.84.8
+      targetRevision: 46.106.12
       helm:
         valueFiles:
           - $values/kubernetes/infrastructure/renovate/values.yaml
