@@ -7,7 +7,7 @@
 
 ## Overview
 3-node k3s Kubernetes cluster running on Raspberry Pi 4.  
-Built to learn GitOps, monitoring, and manage a production-like environment locally.
+Built to learn and deepen my Kubernetes knowledge using GitOps, monitoring, and managing a production-like environment locally.
 
 
 ## Architecture
