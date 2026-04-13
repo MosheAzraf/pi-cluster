@@ -22,6 +22,15 @@ spec:
     storageClass: local-path
 
   managed:
+    services:
+      additional:
+        - selectorType: rw
+          serviceTemplate:
+            metadata:
+              name: postgres-rw-lb
+            spec:
+              type: LoadBalancer
+    
     roles:
       - name: linkding
         ensure: present
@@ -31,6 +40,7 @@ spec:
         superuser: false
         passwordSecret:
           name: linkding-db-secret
+    
 
 
 
